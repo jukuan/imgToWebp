@@ -32,7 +32,7 @@ final class ImgResizerServiceTest extends TestCase
         $sourceImage = 'examples/static/uploads/guy.jpg';
         $gdImage = imagecreatefromjpeg($sourceImage);
 
-        $newWebPath = 'examples/resized/static/uploads/guy.webp';
+        $newWebPath = __DIR__ . '/../../examples/resized/static/uploads/guy.webp';
         $expectedExt = 'webp';
 
         $this->imgResizer->writeGdImage($gdImage, $newWebPath, $expectedExt);
