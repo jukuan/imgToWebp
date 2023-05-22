@@ -23,6 +23,7 @@
     "minimum-stability": "beta",
     "require": {
         "ext-gd": "*",
+        "ext-fileinfo": "*",
         "php": ">=7.4"
     },
     "require-dev": {

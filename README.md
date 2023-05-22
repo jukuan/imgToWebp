@@ -38,6 +38,29 @@ try {
 }
 ```
 
+Example for Laravel:
+
+```php web.php
+
+use Jukuan\ImgToWeb\Service\ImgConvertorService;
+use Jukuan\ImgToWeb\Http\Response as ImgToWebResponse;
+
+Route::get('img', function ()
+{
+    $sourceImgDir = public_path('');
+    $resizedImgDir = public_path('resized');
+
+    try {
+        $imagePath = (new ImgConvertorService())
+            ->setDirs($resizedImgDir, $sourceImgDir)
+            ->prepareImagePath();
+        (new ImgToWebResponse())->doImageOutput($imagePath);
+    } catch (\Exception $e) {
+        abort(404);
+    }
+});
+```
+
 In the URL you can specify additional options, such as the width, the height, the extension of output file:
 For example: `https://example.com/resizer/?img=static/uploads/guy.jpg&w=120`
 

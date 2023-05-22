@@ -47,6 +47,12 @@ class ImgConvertorService
             throw new NotFoundException('The destination directory does not exist: ' . ($this->destinationDir ?? ''));
         }
 
+        $mime = $this->getFileMimeType($sourceFile);
+
+        if (!str_starts_with($mime, 'image/')) {
+            throw new NotFoundException('The source file has to be valid image!');
+        }
+
         $destinationFile = (new FilePathGenerator())->doDestinationFilePath($this->destinationDir, $request);
 
         if (!file_exists($destinationFile)) {
@@ -55,5 +61,17 @@ class ImgConvertorService
         }
 
         return $destinationFile;
+    }
+
+    private function getFileMimeType(string $filePath)
+    {
+        try {
+            $fileInfo = finfo_open(FILEINFO_MIME_TYPE);
+
+            return finfo_file($fileInfo, $filePath);
+        } catch (\Exception $e) {
+        }
+
+        return '';
     }
 }
