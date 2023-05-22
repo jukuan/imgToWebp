@@ -21,8 +21,8 @@ final class ImgResizerServiceTest extends TestCase
         $sourceImage = 'examples/static/uploads/guy.jpg';
         $gdImage = $this->imgResizer->createGdImage($sourceImage);
 
-        $this->assertSame(imagesx($gdImage), 512);
-        $this->assertSame(imagesy($gdImage), 442);
+        $this->assertSame(512, (int)imagesx($gdImage));
+        $this->assertSame(442, (int)imagesy($gdImage));
 
         imagedestroy($gdImage);
     }

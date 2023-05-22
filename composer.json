@@ -11,7 +11,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "Tests/"
         }
     },
     "authors": [
@@ -23,13 +23,13 @@
     "minimum-stability": "beta",
     "require": {
         "ext-gd": "*",
-        "php": ">=8.1"
+        "php": ">=7.4"
     },
     "require-dev": {
         "vimeo/psalm": "^5.11",
         "phpunit/phpunit": "^10.1"
     },
     "scripts": {
-        "test": "phpunit tests"
+        "test": "phpunit Tests"
     }
 }

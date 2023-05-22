@@ -6,13 +6,19 @@ namespace Jukuan\ImgToWeb\Http;
 
 class Response
 {
-    public function doNotFound(): never
+    /**
+     * @return never
+     */
+    public function doNotFound(): void
     {
         header('HTTP/1.0 404 Not Found');
         die();
     }
 
-    public function doImageOutput(string $webpPath, string $imgType = 'image/webp'): never
+    /**
+     * @return never
+     */
+    public function doImageOutput(string $webpPath, string $imgType = 'image/webp'): void
     {
         if (!file_exists($webpPath)) {
             $this->doNotFound();

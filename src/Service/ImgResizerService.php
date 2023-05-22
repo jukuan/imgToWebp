@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Jukuan\ImgToWeb\Service;
 
-use GdImage;
+//use GdImage;
 use Jukuan\ImgToWeb\Exceptions\BadRequestException;
 use Jukuan\ImgToWeb\Exceptions\CannotConvert;
 use Jukuan\ImgToWeb\Http\Request;
@@ -21,9 +21,10 @@ class ImgResizerService
     }
 
     /**
+     * @return \GdImage
      * @throws CannotConvert
      */
-    public function createGdImage(string $sourceImage): GdImage
+    public function createGdImage(string $sourceImage)/*: \GdImage*/
     {
         $extension = pathinfo($sourceImage, PATHINFO_EXTENSION);
         $extension = strtolower($extension);
@@ -41,7 +42,7 @@ class ImgResizerService
         return $image;
     }
 
-    public function writeGdImage(GdImage $image, string $newWebPath, ?string $ext = null): void
+    public function writeGdImage(/*GdImage*/ $image, string $newWebPath, ?string $ext = null): void
     {
         $ext = $ext ? strtolower($ext) : $this->defaultExtension;
 
